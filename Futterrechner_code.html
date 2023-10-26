@@ -1,0 +1,102 @@
+<html>
+
+<head>
+
+  <title>Futterrechner für Hunde</title>
+
+</head>
+
+<body>
+
+  <h1>Futterrechner für Hunde</h1>
+
+  <p>Geben Sie das Gewicht und das Alter Ihres Hundes ein und wählen Sie sein Aktivitätslevel aus.</p>
+
+  <p>Dann klicken Sie auf Berechnen, um die empfohlene Futtermenge in Gramm zu erhalten.</p>
+
+  <p>Das Futter ist Bavaro Force 28/16.</p>
+
+  <form id="futterform">
+
+    <label for="gewicht">Gewicht (kg):</label>
+
+    <input type="number" id="gewicht" name="gewicht" min="0" step="0.1" required><br>
+
+    <label for="alter">Alter (Monate):</label>
+
+    <input type="number" id="alter" name="alter" min="0" step="1" required><br>
+
+    <label for="aktivität">Aktivitätslevel:</label>
+
+    <select id="aktivität" name="aktivität" required>
+
+      <option value="">Bitte auswählen</option>
+
+      <option value="0.8">Niedrig</option>
+
+      <option value="1">Mittel</option>
+
+      <option value="1.2">Hoch</option>
+
+    </select><br>
+
+    <button type="button" id="berechnen">Berechnen</button><br>
+
+    <label for="futter">Futtermenge (g):</label>
+
+    <input type="text" id="futter" name="futter" readonly><br>
+
+  </form>
+
+
+
+
+  <script>
+
+    // Diese Funktion wird ausgeführt, wenn der Benutzer auf den Button klickt
+
+    function berechneFutter() {
+
+      // Die eingegebenen Daten auslesen und in Variablen speichern
+
+      var gewicht = document.getElementById("gewicht").value;
+
+      var alter = document.getElementById("alter").value;
+
+      var aktivität = document.getElementById("aktivität").value;
+
+
+
+
+      // Die Futtermenge berechnen basierend auf den Daten und der Formel
+
+      var futter = (gewicht * 10 + alter * 5) * aktivität;
+
+
+
+
+      // Die Futtermenge auf die nächste ganze Zahl runden
+
+      futter = Math.round(futter);
+
+
+
+
+      // Die Futtermenge im Textfeld anzeigen
+
+      document.getElementById("futter").value = futter;
+
+    }
+
+
+
+
+    // Diese Zeile verbindet den Button mit der Funktion
+
+    document.getElementById("berechnen").onclick = berechneFutter;
+
+  </script>
+
+</body>
+
+</html>
